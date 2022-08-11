@@ -1,5 +1,5 @@
 interface IRestaurant {
-    id:number
+    id:string
     name:string
     location:string
     price_range:number

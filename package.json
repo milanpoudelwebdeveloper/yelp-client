@@ -12,6 +12,7 @@
   "author": "milan poudel",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
     "next": "^12.2.4",
     "react": "^18.2.0",

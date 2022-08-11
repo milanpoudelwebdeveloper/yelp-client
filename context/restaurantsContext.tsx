@@ -2,12 +2,14 @@ import React, { createContext, useState } from "react";
 
 interface IRestaurantContext {
   restaurants: IRestaurant[];
+  addRestaurant: (restaurant: IRestaurant) => void;
   setRestaurants: React.Dispatch<IRestaurant[]>
 }
 
 export const RestaurantsContext = createContext<IRestaurantContext>({
   restaurants: [],
-  setRestaurants: ()=>null
+  addRestaurant: () => null,
+  setRestaurants: () => null,
 });
 
 type props = {
@@ -17,11 +19,16 @@ type props = {
 export const RestaurantContextProvider = ({ children }: props) => {
   const [restaurants, setRestaurants] = useState<IRestaurant[]>([]);
 
+  const addRestaurant = (restaurant: IRestaurant) => {
+    setRestaurants((prevState) => [restaurant, ...prevState]);
+  };
+
   return (
     <RestaurantsContext.Provider
       value={{
         restaurants,
-        setRestaurants
+        addRestaurant,
+        setRestaurants,
       }}
     >
       {children}
