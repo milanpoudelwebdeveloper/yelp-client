@@ -19,6 +19,15 @@ const Restaurants = () => {
       .catch((e) => console.log(e));
   }, []);
 
+  const deleteRestaurant = async (id: string) => {
+    try {
+      axiosClient.delete(`/restaurant/${id}`);
+      setRestaurants(restaurants.filter((restaurant) => restaurant.id !== id));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="list-group">
       <table className="table table-dark table-hover">
@@ -42,7 +51,12 @@ const Restaurants = () => {
                 <button className="btn btn-warning">Edit</button>
               </td>
               <td>
-                <button className="btn btn-danger">Delete</button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => deleteRestaurant(id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
