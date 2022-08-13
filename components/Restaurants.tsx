@@ -45,7 +45,7 @@ const Restaurants = () => {
         <tbody>
           {restaurants.map(({ id, name, location, price_range }) => (
             <tr key={id}>
-              <td>{name}</td>
+              <td onClick={()=>router.push(`/restaurant/${id}`)}>{name}</td>
               <td>{location}</td>
               <td>{price_range}</td>
               <td>Rating</td>
