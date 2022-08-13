@@ -2,9 +2,11 @@ import React, { useContext, useEffect } from "react";
 import { tableHeadings } from "../constants/tableHeadings";
 import { axiosClient } from "../apis/RestaurantFinder";
 import { RestaurantsContext } from "../context/restaurantsContext";
+import { useRouter } from "next/router";
 
 const Restaurants = () => {
   const { restaurants, setRestaurants } = useContext(RestaurantsContext);
+  const router= useRouter()
 
   useEffect(() => {
     axiosClient
@@ -48,7 +50,7 @@ const Restaurants = () => {
               <td>{price_range}</td>
               <td>Rating</td>
               <td>
-                <button className="btn btn-warning">Edit</button>
+                <button className="btn btn-warning" onClick={()=>router.push(`/restaurant/update/${id}`)}>Edit</button>
               </td>
               <td>
                 <button

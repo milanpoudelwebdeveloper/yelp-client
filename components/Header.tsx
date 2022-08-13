@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Header = () => {
+const Header:React.FC<{title:string}> = ({title}) => {
   return (
     <div>
         <h1 className='font-weight-light display-1 text-center'>
-            Restaurant Finder
+           {title}
         </h1>
     </div>
   )
